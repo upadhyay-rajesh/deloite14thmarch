@@ -1,6 +1,8 @@
-package com.facebook;
+package com.facebook.view;
 
 import java.util.Scanner;
+
+import com.facebook.controller.FacebookController;
 
 public class FacebookView {
 
