@@ -3,7 +3,7 @@ package com.facebook;
 import java.util.Scanner;
 
 public class FacebookView {
-//
+
 	public static void main(String[] args) {
 		
 		String ss="y";
@@ -21,25 +21,27 @@ public class FacebookView {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("enter your choice");
 		int ch = sc.nextInt();
+		
+		FacebookController f=new FacebookController();
 
 		switch (ch) {
-		case 1:
-			System.out.println("profile created");
+		case 1:  f.createProfile();
+			
 			break;
-		case 2:
-			System.out.println("profile viewed");
+		case 2: f.viewProfile();
+			
 			break;
-		case 3:
-			System.out.println("profile deleted");
+		case 3:f.deleteProfile();
+			
 			break;
-		case 4:
-			System.out.println("profile searched");
+		case 4:f.searchProfile();
+			
 			break;
-		case 5:
-			System.out.println("all profile viewed");
+		case 5:f.viewAllProfile();
+			
 			break;
-		case 6:
-			System.out.println("profile edited");
+		case 6:f.editProfile();
+			
 			break;
 		default:
 			System.out.println("wrong choice");
@@ -50,5 +52,25 @@ public class FacebookView {
 		}
 
 	}
+	
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
