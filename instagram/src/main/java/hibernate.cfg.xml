@@ -12,7 +12,7 @@
       
       <property name="show_sql">true</property>
       <property name="dialect">org.hibernate.dialect.OracleDialect</property>
-      <property name="hibernate.hbm2ddl.auto">update</property>
+     <!--  <property name="hibernate.hbm2ddl.auto">update</property> -->
       <!-- Mapping files -->
       <!--<mapping resource="Group.hbm.xml"/>-->
       <!--<mapping resource="book.hbm.xml"/>-->

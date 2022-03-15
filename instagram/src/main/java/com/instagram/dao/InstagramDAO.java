@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,7 +44,7 @@ public class InstagramDAO implements InstagramDAOInterface {
 
 	public InstagramUser viewProfileDAO(InstagramUser iu) {
 		InstagramUser ss=null;
-		try {
+		/*try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","rajesh");
 			PreparedStatement ps=con.prepareStatement("select * from deloiteinstagram where email=?");
@@ -65,8 +67,44 @@ public class InstagramDAO implements InstagramDAOInterface {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-		}
+		}*/
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		Session s=sf.openSession();
+		Query q=s.createQuery("from com.instagram.entity.InstagramUser u where u.email=:em");
+		q.setParameter("em", iu.getEmail());
+		
+		ss=(InstagramUser)q.getSingleResult();
+		return ss;
+	}
+
+	public List<InstagramUser> viewAllProfileDAO() {
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		Session s=sf.openSession();
+		Query q=s.createQuery("from com.instagram.entity.InstagramUser u");
+				
+		List<InstagramUser> ss=q.getResultList();
 		return ss;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

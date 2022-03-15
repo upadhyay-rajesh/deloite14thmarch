@@ -14,6 +14,7 @@ public class InstagramView {
 		System.out.println("*******************MAIN MENU**********");
 		System.out.println("press 1 to create profile");
 		System.out.println("press 2 to view profile");
+		System.out.println("press 3 to view all profile");
 		
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter choice");
@@ -25,6 +26,8 @@ public class InstagramView {
 		case 1: ic.createProfileController();
 			break;
 		case 2: ic.vieweProfileController();
+		break;
+		case 3: ic.vieweAllProfileController();
 		break;
 			default:System.out.println("wrong choice");
 		}

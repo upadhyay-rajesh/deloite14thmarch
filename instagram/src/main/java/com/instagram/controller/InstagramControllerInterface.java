@@ -6,4 +6,6 @@ public interface InstagramControllerInterface {
 
 	void vieweProfileController();
 
+	void vieweAllProfileController();
+
 }

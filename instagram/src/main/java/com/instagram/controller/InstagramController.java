@@ -1,5 +1,6 @@
 package com.instagram.controller;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.instagram.entity.InstagramUser;
@@ -57,6 +58,22 @@ public class InstagramController implements InstagramControllerInterface {
 			System.out.println("Email is "+w.getEmail());
 			System.out.println("Address is "+w.getAddress());
 		}
+	}
+
+	public void vieweAllProfileController() {
+		InstagramServiceInterface is=new InstagramService();
+		List<InstagramUser> ll=is.viewAllProfileService();
+		
+		for(InstagramUser iu:ll) {
+			System.out.println("**********************");
+			System.out.println("Name is "+iu.getName());
+			System.out.println("Password is "+iu.getPassword());
+			System.out.println("Email is "+iu.getEmail());
+			System.out.println("Address is "+iu.getAddress());
+		}
+		
+		
+		
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.instagram.service;
 
+import java.util.List;
+
 import com.instagram.dao.InstagramDAO;
 import com.instagram.dao.InstagramDAOInterface;
 import com.instagram.entity.InstagramUser;
@@ -16,6 +18,11 @@ public class InstagramService implements InstagramServiceInterface {
 		InstagramDAOInterface id=new InstagramDAO();
 		InstagramUser w=id.viewProfileDAO(iu);
 		return w;
+	}
+
+	public List<InstagramUser> viewAllProfileService() {
+		InstagramDAOInterface id=new InstagramDAO();
+		return id.viewAllProfileDAO();
 	}
 
 }
