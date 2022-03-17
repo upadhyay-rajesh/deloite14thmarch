@@ -8,4 +8,6 @@ public interface FacebookServiceInterface {
 
 	boolean checkLoginService(FacebookUser fb);
 
+	FacebookUser viewProfileService(FacebookUser fb);
+
 }

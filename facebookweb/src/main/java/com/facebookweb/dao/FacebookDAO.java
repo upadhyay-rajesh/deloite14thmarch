@@ -41,6 +41,23 @@ public class FacebookDAO implements FacebookDAOInterface {
 		return false;
 	}
 
+	@Override
+	public FacebookUser viewProfileDAO(FacebookUser fb) {
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		Session s=sf.openSession();
+		Query q=s.createQuery("from com.facebookweb.entity.FacebookUser f where email=:em");
+		q.setParameter("em", fb.getEmail());
+		
+		FacebookUser f1=null;
+		List<FacebookUser> ll=q.getResultList();
+		if(ll.size()>0) {
+			for(FacebookUser s1:ll) {
+				f1=s1;
+			}
+		}
+		return f1;
+	}
+
 }
 
 

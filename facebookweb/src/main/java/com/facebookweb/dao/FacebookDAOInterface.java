@@ -8,4 +8,6 @@ public interface FacebookDAOInterface {
 
 	boolean loginDAO(FacebookUser fb);
 
+	FacebookUser viewProfileDAO(FacebookUser fb);
+
 }
