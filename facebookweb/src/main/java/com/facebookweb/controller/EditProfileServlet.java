@@ -13,7 +13,7 @@ import com.facebookweb.entity.FacebookUser;
 import com.facebookweb.service.FacebookService;
 import com.facebookweb.service.FacebookServiceInterface;
 
-public class ViewProfileServlet extends HttpServlet {
+public class EditProfileServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession ss=request.getSession(true);
@@ -30,17 +30,30 @@ public class ViewProfileServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		out.println("<html><body><center>");
-			if(ff!=null) {
-				out.println("<font color=red size=5>User Detail is below</font>");
-				out.println("<br>Name is "+ff.getName());
-				out.println("<br>Password is "+ff.getPassword());
-				out.println("<br>Email is "+ff.getEmail());
-				out.println("<br>Address is "+ff.getAddress());
-			}
-			else {
-				out.println("profile not found");
-			}
+			out.println("<p>Edit profile</p>");
+			out.println("<form method=post action=EditProfileServlet1");
+			out.println("<table border=25>");
+			out.println("<tr><td>Name </td><td><input type=text name=nm value="+ff.getName()+"></td></tr>");
+			out.println("<tr><td>Password </td><td><input type=text name=pass value="+ff.getPassword()+"></td></tr>");
+			out.println("<tr><td>Email </td><td><input type=text name=em value="+ff.getEmail()+" ></td></tr>");
+			out.println("<tr><td>Address </td><td><input type=text name=ad value="+ff.getAddress()+"></td></tr>");
+			out.println("<tr><td><input type=submit value=edit> </td><td><input type=reset></td></tr>");
+			out.println("</table>");
+			out.println("</form>");
 		out.println("</center></body></html>");
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

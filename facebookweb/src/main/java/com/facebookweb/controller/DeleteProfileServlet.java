@@ -13,7 +13,10 @@ import com.facebookweb.entity.FacebookUser;
 import com.facebookweb.service.FacebookService;
 import com.facebookweb.service.FacebookServiceInterface;
 
-public class ViewProfileServlet extends HttpServlet {
+/**
+ * Servlet implementation class DeleteProfileServlet
+ */
+public class DeleteProfileServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession ss=request.getSession(true);
@@ -24,21 +27,19 @@ public class ViewProfileServlet extends HttpServlet {
 		
 		
 		FacebookServiceInterface fs= new FacebookService();
-		FacebookUser ff=fs.viewProfileService(fb);
+		int ff=fs.deleteProfileService(fb);
 		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
 		out.println("<html><body><center>");
-			if(ff!=null) {
+			if(ff>0) {
 				out.println("<font color=red size=5>User Detail is below</font>");
-				out.println("<br>Name is "+ff.getName());
-				out.println("<br>Password is "+ff.getPassword());
-				out.println("<br>Email is "+ff.getEmail());
-				out.println("<br>Address is "+ff.getAddress());
+				out.println("<br>profile deleted ");
+				
 			}
 			else {
-				out.println("profile not found");
+				out.println("could not delete profile ");
 			}
 		out.println("</center></body></html>");
 	}

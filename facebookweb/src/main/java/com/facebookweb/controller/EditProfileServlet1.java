@@ -7,40 +7,43 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.facebookweb.entity.FacebookUser;
 import com.facebookweb.service.FacebookService;
 import com.facebookweb.service.FacebookServiceInterface;
 
-public class ViewProfileServlet extends HttpServlet {
+/**
+ * Servlet implementation class EditProfileServlet1
+ */
+public class EditProfileServlet1 extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession ss=request.getSession(true);
-		Object oo=ss.getAttribute("userid");
-		String email=oo.toString();
+		String name=request.getParameter("nm");
+		String password=request.getParameter("pass");
+		String email=request.getParameter("em");
+		String address=request.getParameter("ad");
+		
 		FacebookUser fb=new FacebookUser();
+		fb.setName(name);
+		fb.setPassword(password);
 		fb.setEmail(email);
+		fb.setAddress(address);
 		
+		FacebookServiceInterface fs=new FacebookService();
+		int i=fs.editProfileService(fb);
 		
-		FacebookServiceInterface fs= new FacebookService();
-		FacebookUser ff=fs.viewProfileService(fb);
 		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
-		out.println("<html><body><center>");
-			if(ff!=null) {
-				out.println("<font color=red size=5>User Detail is below</font>");
-				out.println("<br>Name is "+ff.getName());
-				out.println("<br>Password is "+ff.getPassword());
-				out.println("<br>Email is "+ff.getEmail());
-				out.println("<br>Address is "+ff.getAddress());
+		out.println("<html><body>");
+			if(i>0) {
+				out.println("profile edited <a href=login.html>Sign In</a>");
 			}
 			else {
-				out.println("profile not found");
+				out.println("could not edit");
 			}
-		out.println("</center></body></html>");
+		out.println("</body></html>");
 	}
 
 }

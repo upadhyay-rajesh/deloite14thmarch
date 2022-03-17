@@ -58,6 +58,45 @@ public class FacebookDAO implements FacebookDAOInterface {
 		return f1;
 	}
 
+	@Override
+	public List<FacebookUser> viewAllProfileDAO() {
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		Session s=sf.openSession();
+		Query q=s.createQuery("from com.facebookweb.entity.FacebookUser f");
+		
+		List<FacebookUser> ll=q.getResultList();
+		return ll;
+	}
+
+	@Override
+	public int editProfileDAO(FacebookUser fb) {
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		Session s=sf.openSession();
+		Query q=s.createQuery("update com.facebookweb.entity.FacebookUser f set f.name=:nm, f.password=:pw, f.address=:ad where f.email=:em");
+		q.setParameter("nm", fb.getName());
+		q.setParameter("pw", fb.getPassword());
+		q.setParameter("ad", fb.getAddress());
+		q.setParameter("em", fb.getEmail());
+		EntityTransaction et=s.getTransaction();
+		et.begin();
+		int i=q.executeUpdate();
+		et.commit();
+		return i;
+	}
+
+	@Override
+	public int deleteProfileDAO(FacebookUser fb) {
+		SessionFactory sf=new Configuration().configure().buildSessionFactory();
+		Session s=sf.openSession();
+		Query q=s.createQuery("delete from com.facebookweb.entity.FacebookUser f where f.email=:em");
+		q.setParameter("em", fb.getEmail());
+		EntityTransaction et=s.getTransaction();
+		et.begin();
+		int i=q.executeUpdate();
+		et.commit();
+		return i;
+	}
+
 }
 
 
