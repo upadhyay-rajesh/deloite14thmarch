@@ -46,6 +46,12 @@
   	<description></description>
   	<servlet-class>com.facebookweb.controller.DeleteProfileServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>CheckEmailServlet</servlet-name>
+  	<display-name>CheckEmailServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.facebookweb.controller.CheckEmailServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrationServlet</servlet-name>
   	<url-pattern>/RegistrationServlet</url-pattern>
@@ -73,5 +79,9 @@
   <servlet-mapping>
   	<servlet-name>DeleteProfileServlet</servlet-name>
   	<url-pattern>/DeleteProfileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckEmailServlet</servlet-name>
+  	<url-pattern>/CheckEmailServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,6 +1,7 @@
 package com.facebookweb.dao;
 
 import java.util.List;
+import java.util.Scanner;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -81,6 +82,7 @@ public class FacebookDAO implements FacebookDAOInterface {
 		et.begin();
 		int i=q.executeUpdate();
 		et.commit();
+		
 		return i;
 	}
 

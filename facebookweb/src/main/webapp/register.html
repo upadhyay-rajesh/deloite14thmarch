@@ -3,15 +3,37 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<script type="text/javascript">
+	function checkEmail(){
+		var v=document.getElementById("em").value;
+		
+		//step 1
+		var x=new XMLHttpRequest();
+		//step 2
+		x.open("GET","CheckEmailServlet?email="+v,true);
+		//step 3
+		x.send();
+		
+		//step 4
+		x.onreadystatechange=function(){
+			if(x.readyState==4){
+				var v2=x.responseText;
+				document.getElementById("eresult").innerHTML=v2;
+			}
+		}
+	}
+</script>
+
 </head>
 <body><center>
 	<p>Registration Page</p><br>
 	<form method="post" action="RegistrationServlet">
 	Name : <input type=text name=nm><br>
 	Password : <input type="password" name=pass><br>
-	Email : <input type=email name=em><br>
+	Email : <input type=email id="em" name=em onkeyup="checkEmail()"><div id="eresult"></div><br>
 	Address : <input type=text name=ad><br>
-	<input type=submit value=SignUp>
+	<input type=submit disabled value=SignUp id="b1">
 	</form>
 </center></body>
 </html>
