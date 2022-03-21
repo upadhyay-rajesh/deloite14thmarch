@@ -1,0 +1,44 @@
+<html><head>
+
+	<script>
+		var v1=34;
+		var v2="Mohan";
+		document.write("hello "+v1);
+		console.log("welcome "+v2 );
+
+		function add(){
+			var v4=document.getElementById("pp").value;
+			var v5=document.getElementById("pp1").value;
+			console.log("Addition is   "+( parseInt(v4)+parseInt(v5)));
+			document.getElementById("rr").innerHTML="Addition is   "+( parseInt(v4)+parseInt(v5))
+		}
+		function subtract(){
+			var v4=document.getElementById("pp").value;
+			var v5=document.getElementById("pp1").value;
+			console.log("subtraction is   "+( parseInt(v4)-parseInt(v5)));
+			document.getElementById("rr").innerHTML="Substraction is   "+( parseInt(v4)-parseInt(v5))
+		}
+		function multiply(){
+			var v4=document.getElementById("pp").value;
+			var v5=document.getElementById("pp1").value;
+			console.log("multiply is   "+( parseInt(v4)*parseInt(v5)));
+			document.getElementById("rr").innerHTML="Multiplication is   "+( parseInt(v4)*parseInt(v5))
+		}
+		function divide(){
+			var v4=document.getElementById("pp").value;
+			var v5=document.getElementById("pp1").value;
+			console.log("division is   "+( parseInt(v4)/parseInt(v5)));
+			document.getElementById("rr").innerHTML="Division is   "+( parseInt(v4)/parseInt(v5))
+		}
+
+		
+	</script>
+
+</head><body>
+
+	First No <input type=text id="pp"><br>
+	Second No<input type=text id="pp1">		
+
+	<br><input type=button value=add onClick="add()"><input type=button value=subtract onClick="subtract()"><input type=button value=multiply onClick="multiply()"><input type=button value=divide onClick="divide()">
+	<br><div id="rr"> </div>
+</body></html>
