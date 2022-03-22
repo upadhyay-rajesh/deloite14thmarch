@@ -3,6 +3,7 @@ package com.facebookweb.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,11 @@ public class RegistrationServlet extends HttpServlet {
 		FacebookServiceInterface fs=new FacebookService();
 		int i=fs.createProfileService(fb);
 		
+		request.setAttribute("result", i);
+		RequestDispatcher rd=getServletContext().getRequestDispatcher("/registrationresult.jsp");
+		rd.forward(request, response);
 		
+		/*
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
@@ -43,6 +48,7 @@ public class RegistrationServlet extends HttpServlet {
 				out.println("Registration Fail");
 			}
 		out.println("</body></html>");
+		*/
 	}
 
 }
