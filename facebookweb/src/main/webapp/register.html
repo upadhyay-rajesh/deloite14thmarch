@@ -19,20 +19,65 @@
 		x.onreadystatechange=function(){
 			if(x.readyState==4){
 				var v2=x.responseText;
-				document.getElementById("eresult").innerHTML=v2;
+				console.log(v2);
+				if(v2.trim()=="valid email"){
+					alert("hello");
+					document.getElementById("eresult").innerHTML=v2;
+					document.getElementById("b1").disabled=false;
+				}
+				else{
+					document.getElementById("eresult").innerHTML=v2;
+					document.getElementById("b1").disabled=true;
+				}
+				
 			}
+		}
+	}
+	
+	function loadCountry(){
+		var x=new XMLHttpRequest();
+		x.open("GET","LoadCountryServlet",true);
+		x.send();
+		x.onreadystatechange=function(){
+			if(x.readyState==4){
+				var v2=x.responseText;
+				document.getElementById("cou").innerHTML=v2;
+			}
+		}
+	}
+	
+	function loadCaptcha(){
+		var x=new XMLHttpRequest();
+		x.open("GET","LoadCaptchaServlet",true);
+		x.send();
+		x.onreadystatechange=function(){
+			if(x.readyState==4){
+				var v2=x.responseText;
+				document.getElementById("cc").innerHTML=v2;
+			}
+		}
+	}
+	function validateCaptcha(){
+		var v1=document.getElementById("c1").value;
+		var v2=document.getElementById("c2").value;
+		
+		if(v1==v2){
+			document.getElementById("b1").disabled=false;
 		}
 	}
 </script>
 
 </head>
-<body><center>
+<body onLoad="loadCountry()"><center>
 	<p>Registration Page</p><br>
 	<form method="post" action="RegistrationServlet">
 	Name : <input type=text name=nm><br>
 	Password : <input type="password" name=pass><br>
 	Email : <input type=email id="em" name=em onkeyup="checkEmail()"><div id="eresult"></div><br>
 	Address : <input type=text name=ad><br>
+	Country : <div id="cou"></div>
+	<br> <div id="cc"></div>
+	
 	<input type=submit disabled value=SignUp id="b1">
 	</form>
 </center></body>

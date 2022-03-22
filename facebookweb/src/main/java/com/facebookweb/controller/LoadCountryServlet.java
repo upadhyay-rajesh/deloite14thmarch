@@ -8,23 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CheckEmailServlet extends HttpServlet {
-	
+
+public class LoadCountryServlet extends HttpServlet {
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email=request.getParameter("email");
-		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
-		//out.println("<html><body><center>");
-		
-			if(email.equals("abc@yahoo.com")) {
-				out.println("<font color=red>this email already exist</font>");
-			}
-			else {
-				out.println("valid email");
-			}
-		//out.println("</center></body></html>");
+		out.println("<select id=country onBlur=loadCaptcha()><option value=India>India</option><option value=US>US</option></select>");
 	}
 
 }
