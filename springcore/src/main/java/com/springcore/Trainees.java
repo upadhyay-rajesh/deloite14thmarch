@@ -10,6 +10,12 @@ public class Trainees {
 	@Autowired
 	TrainerInterface tt;
 	
+	@Autowired
+	LiberaryInterface ll;
+	
+	@Autowired
+	CanteenInterface cc;
+	
 	/*
 	 * @Autowired will do following 3 task automatically
 	 * 1. will create setter method
@@ -24,6 +30,8 @@ public class Trainees {
 */
 	public void display() {
 		tt.teach();
+		cc.prepareFood();
+		ll.issuebook();
 	}
 
 	public static void main(String[] args) {
